@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Splash Screen</title>
+</head>
+<body>
+    <!-- Splash Screen Section -->
+    <div class="splash-screen">
+        <div class="coin-container"></div>
+        <div class="piggy-bank-container">
+            <img src="{{ url_for('static', filename='piggy-bank.png') }}" alt="Piggy Bank" class="piggy-bank">
+        </div>
+    </div>
+
+    <!-- Welcome Section -->
+    <div class="welcome-section hidden">
+        <h1 class="welcome-text">WELCOME TO TRACKIFY</h1>
+        <div class="login-card">
+            <h2>Login</h2>
+            <form>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
