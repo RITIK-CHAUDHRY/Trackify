@@ -1,13 +1,16 @@
-# Simulated database for demonstration purposes
-users_db = {}
+from pymongo import MongoClient
+from werkzeug.security import generate_password_hash, check_password_hash
 
-def check_credentials(email, password):
-    """Check if the provided credentials match any user in the database."""
-    return users_db.get(email) == password
+client = MongoClient("mongodb://localhost:27017/Trackify")
+db = client['Trackify']
+users_collection = db['users']
 
-def create_user(email, password):
-    """Create a new user in the database."""
-    if email in users_db:
-        return False  # User already exists
-    users_db[email] = password
-    return True
+def store_user(username, email, password):
+    hashed_password = generate_password_hash(password)  # Hash the password before storing
+    users_collection.insert_one({"username": username, "email": email, "password": hashed_password})
+
+def verify_user(email, password):
+    user = users_collection.find_one({"email": email})
+    if user and check_password_hash(user['password'], password):  # Check hashed password
+        return True
+    return False
