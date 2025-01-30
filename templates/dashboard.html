@@ -1,16 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
     <title>Dashboard</title>
-</head>
-<body>
-    <div class="welcome-section">
-        <h1>Dashboard</h1>
-        <p>Welcome to your dashboard!</p>
-        <a href="/logout">Logout</a>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <div class="dashboard-header">
+      <!-- Dark Mode Toggle -->
+      <div class="dark-mode-toggle" id="darkModeToggle">
+        <div class="toggle-slider"></div>
+      </div>
+
+      <!-- Dashboard Title -->
+      <h1 class="dashboard-title">TRACKIFY</h1>
+
+      <!-- Profile Section -->
+      <div class="profile-section">
+        <div class="profile-icon">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="dropdown-item" id="profileOption">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </div>
+          <div class="dropdown-separator"></div>
+          <div class="dropdown-item" id="logoutOption">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+
+    <!-- Main Dashboard Content Container -->
+    <div class="dashboard-content">
+      <!-- Your other dashboard sections will go here -->
+      <div class="expenditure-overview">
+        <div class="graph-section">
+          <div class="expenditure-graph">
+            <!-- Graph placeholder -->
+            <div class="graph-placeholder"></div>
+          </div>
+          <div class="monthly-data">
+            <h3>Monthly Expend</h3>
+            <div class="month-list">
+              <div class="month-item">Jan: Rs.1000</div>
+              <div class="month-item">Feb: Rs.2000</div>
+              <div class="month-item">March: Rs.3000</div>
+            </div>
+            <button class="show-more">Show more</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Add and Reminders Section -->
+      <div class="utility-section">
+        <div class="quick-add">
+          <h3>QUICK ADD</h3>
+          <div class="add-button">
+            <i class="fas fa-plus"></i>
+          </div>
+        </div>
+        <div class="reminders">
+          <h3>REMINDER AND ALERTS</h3>
+          <div class="alerts-list">
+            <!-- Alerts will be dynamically added here -->
+          </div>
+          <button class="show-more">Show more</button>
+        </div>
+      </div>
+
+      <!-- Highlights Section -->
+      <div class="highlights-section">
+        <h3>HIGHLIGHTS (Insights/Trends:)</h3>
+        <div class="insights-content">
+          <!-- Insights will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Chatbot Button -->
+      <div class="chatbot-button">
+        <i class="fas fa-comment"></i>
+      </div>
+    </div>
+
+    <div class="expense-modal" id="expenseModal">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <form class="expense-form">
+          <div class="form-group">
+            <label class="form-label">Amount (₹)</label>
+            <input
+              type="number"
+              class="form-input"
+              placeholder="Enter amount"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Payment Mode</label>
+            <div class="payment-methods">
+              <div class="payment-method" data-method="cash">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Cash</span>
+              </div>
+              <div class="payment-method" data-method="upi">
+                <i class="fas fa-mobile-alt"></i>
+                <span>UPI</span>
+              </div>
+              <div class="payment-method" data-method="debit">
+                <i class="fas fa-credit-card"></i>
+                <span>Debit</span>
+              </div>
+              <div class="payment-method" data-method="credit">
+                <i class="fas fa-credit-card"></i>
+                <span>Credit</span>
+              </div>
+              <div class="payment-method" data-method="other">
+                <i class="fas fa-ellipsis-h"></i>
+                <span>Other</span>
+              </div>
+            </div>
+            <input
+              type="text"
+              class="form-input"
+              id="otherPayment"
+              placeholder="Specify payment method"
+              style="display: none"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <div class="categories-grid">
+              <div class="category-item" data-category="food">
+                <i class="fas fa-utensils"></i>
+                <span>Food</span>
+              </div>
+              <div class="category-item" data-category="travel">
+                <i class="fas fa-car"></i>
+                <span>Travel</span>
+              </div>
+              <div class="category-item" data-category="shopping">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Shopping</span>
+              </div>
+              <div class="category-item" data-category="bills">
+                <i class="fas fa-file-invoice"></i>
+                <span>Bills</span>
+              </div>
+              <div class="category-item" data-category="entertainment">
+                <i class="fas fa-film"></i>
+                <span>Entertainment</span>
+              </div>
+              <div class="category-item" data-category="health">
+                <i class="fas fa-heartbeat"></i>
+                <span>Health</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Date</label>
+            <input type="date" class="form-input" required />
+          </div>
+
+          <button type="button" class="voice-input-btn">
+            <i class="fas fa-microphone"></i>
+          </button>
+
+          <div class="form-group">
+            <label class="form-label">Receipt</label>
+            <label class="receipt-upload-btn">
+              <i class="fas fa-upload"></i>
+              <span>Upload Receipt</span>
+              <input type="file" hidden accept="image/*" />
+            </label>
+          </div>
+
+          <button type="submit" class="submit-btn">Save Expense</button>
+        </form>
+      </div>
+    </div>
+    <!-- Add JavaScript for dark mode toggle -->
+    <script>
+      const darkModeToggle = document.getElementById("darkModeToggle");
+
+      darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        darkModeToggle.classList.toggle("active");
+      });
+
+      // Add this to your existing script section
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("expenseModal");
+        const addButton = document.querySelector(".add-button");
+        const closeButton = document.querySelector(".modal-close");
+
+        // Show modal when clicking the + button
+        addButton.addEventListener("click", () => {
+          modal.style.display = "block";
+          // Set today's date as default
+          const today = new Date().toISOString().split("T")[0];
+          document.querySelector('input[type="date"]').value = today;
+        });
+
+        // Close modal when clicking the X button
+        closeButton.addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+
+        // Handle payment method selection
+        const paymentMethods = document.querySelectorAll(".payment-method");
+        const otherPayment = document.getElementById("otherPayment");
+
+        paymentMethods.forEach((method) => {
+          method.addEventListener("click", () => {
+            // Remove selected class from all methods
+            paymentMethods.forEach((m) => m.classList.remove("selected"));
+            // Add selected class to clicked method
+            method.classList.add("selected");
+            // Show/hide other payment input
+            otherPayment.style.display =
+              method.dataset.method === "other" ? "block" : "none";
+          });
+        });
+
+        // Handle category selection
+        const categories = document.querySelectorAll(".category-item");
+        categories.forEach((category) => {
+          category.addEventListener("click", () => {
+            // Remove selected class from all categories
+            categories.forEach((c) => c.classList.remove("selected"));
+            // Add selected class to clicked category
+            category.classList.add("selected");
+          });
+        });
+
+        // Handle voice input
+        const voiceButton = document.querySelector(".voice-input-btn");
+        voiceButton.addEventListener("click", () => {
+          if ("webkitSpeechRecognition" in window) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = () => {
+              voiceButton.style.backgroundColor = "#ff4444";
+            };
+
+            recognition.onend = () => {
+              voiceButton.style.backgroundColor = "#4caf50";
+            };
+
+            recognition.onresult = (event) => {
+              const transcript = event.results[0][0].transcript;
+              // Here you would parse the voice input
+              console.log("Voice input:", transcript);
+            };
+
+            recognition.start();
+          } else {
+            alert("Voice input is not supported in your browser");
+          }
+        });
+
+        // Handle form submission
+        const form = document.querySelector(".expense-form");
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          // Here you would handle the form submission
+          console.log("Form submitted");
+          modal.style.display = "none";
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const profileIcon = document.querySelector(".profile-icon");
+        const profileDropdown = document.getElementById("profileDropdown");
+        const profileModal = document.getElementById("profileModal");
+        const profileOption = document.getElementById("profileOption");
+        const logoutOption = document.getElementById("logoutOption");
+        const modalClose = document.querySelector(".modal-close");
+        const profilePhoto = document.querySelector(".profile-photo");
+        const photoInput = document.getElementById("photoInput");
+        const changePasswordBtn = document.getElementById("changePasswordBtn");
+
+        // Toggle dropdown when clicking profile icon
+        profileIcon.addEventListener("click", (e) => {
+          e.stopPropagation();
+          profileDropdown.classList.toggle("active");
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (e) => {
+          if (!profileDropdown.contains(e.target)) {
+            profileDropdown.classList.remove("active");
+          }
+        });
+
+        // Handle profile option click
+        profileOption.addEventListener("click", () => {
+          profileDropdown.classList.remove("active");
+          profileModal.classList.add("active");
+        });
+
+        // Close modal when clicking X
+        modalClose.addEventListener("click", () => {
+          profileModal.classList.remove("active");
+        });
+
+        // Close modal when clicking outside
+        profileModal.addEventListener("click", (e) => {
+          if (e.target === profileModal) {
+            profileModal.classList.remove("active");
+          }
+        });
+
+        // Handle profile photo upload
+        profilePhoto.addEventListener("click", () => {
+          photoInput.click();
+        });
+
+        photoInput.addEventListener("change", (e) => {
+          if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              document.getElementById("profileImage").src = e.target.result;
+            };
+            reader.readAsDataURL(e.target.files[0]);
+          }
+        });
+
+        // Handle change password button
+        changePasswordBtn.addEventListener("click", () => {
+          // Add your change password logic here
+          console.log("Change password clicked");
+          // Example: Show password change modal or navigate to password change page
+        });
+
+        // Handle form submission
+        document
+          .querySelector(".profile-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+            // Add your form submission logic here
+            console.log("Form submitted");
+            // Example: Save profile changes to backend
+            profileModal.classList.remove("active");
+          });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const logoutOption = document.getElementById("logoutOption");
+
+        if (logoutOption) {
+          logoutOption.addEventListener("click", () => {
+            console.log("Logging out...");
+            // Redirect to the login page
+            window.location.href = "/"; // Replace with your login page URL
+          });
+        } else {
+          console.error("Logout option not found!");
+        }
+      });
+    </script>
+    <div class="profile-modal" id="profileModal">
+      <div class="profile-dialog">
+        <button class="modal-close">&times;</button>
+        <div class="profile-photo-section">
+          <div class="profile-photo">
+            <img
+              id="profileImage"
+              src="/api/placeholder/120/120"
+              alt="Profile Photo"
+            />
+            <div class="photo-overlay">
+              <i class="fas fa-camera" style="color: white"></i>
+            </div>
+            <input type="file" id="photoInput" hidden accept="image/*" />
+          </div>
+        </div>
+        <form class="profile-form">
+          <div class="form-group">
+            <label class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-input"
+              id="username"
+              placeholder="Enter username"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input
+              type="tel"
+              class="form-input"
+              id="phone"
+              placeholder="Enter phone number"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-input"
+              id="email"
+              placeholder="Enter email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-input"
+              value="********"
+              disabled
+            />
+            <button
+              type="button"
+              class="change-password-btn"
+              id="changePasswordBtn"
+            >
+              Change Password
+            </button>
+          </div>
+
+          <button type="submit" class="save-btn">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

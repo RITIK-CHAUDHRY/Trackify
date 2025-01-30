@@ -175,3 +175,836 @@ body {
 .secondary-btn:hover {
     background-color: #1976D2; /* Darker blue on hover */
 }
+
+/* Dashboard Header Styling */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    width: 48px;
+    height: 24px;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dark-mode-toggle.active {
+    background-color: #2196F3;
+}
+
+.toggle-slider {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.dark-mode-toggle.active .toggle-slider {
+    transform: translateX(24px);
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.dark-mode .dashboard-header {
+    background-color: #2d2d2d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .dashboard-title {
+    color: white;
+}
+
+.dark-mode .profile-icon {
+    background-color: #404040;
+    color: white;
+}
+.dashboard-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Expenditure Overview Section */
+.expenditure-overview {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.graph-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+.expenditure-graph {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 300px;
+}
+
+.monthly-data {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.month-list {
+    margin: 1rem 0;
+}
+
+.month-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Utility Section (Quick Add and Reminders) */
+.utility-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.quick-add, .reminders {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-button {
+    width: 60px;
+    height: 60px;
+    background: #4caf50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 2rem auto;
+}
+
+.add-button i {
+    color: white;
+    font-size: 24px;
+}
+
+/* Highlights Section */
+.highlights-section {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+/* Chatbot Button */
+.chatbot-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: #2196F3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.chatbot-button i {
+    color: white;
+    font-size: 20px;
+}
+
+/* Show More Button */
+.show-more {
+    background: none;
+    border: none;
+    color: #2196F3;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    display: block;
+    margin-left: auto;
+}
+
+/* Dark Mode Styles */
+.dark-mode .expenditure-overview,
+.dark-mode .quick-add,
+.dark-mode .reminders,
+.dark-mode .highlights-section {
+    background: #2d2d2d;
+    color: white;
+}
+
+.dark-mode .expenditure-graph,
+.dark-mode .monthly-data {
+    background: #363636;
+}
+
+.dark-mode .month-item {
+    border-bottom-color: #404040;
+}
+/* General Transitions for Cards */
+.expenditure-overview,
+.quick-add,
+.reminders,
+.highlights-section {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.expenditure-overview:hover,
+.quick-add:hover,
+.reminders:hover,
+.highlights-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Show More Button Hover Effect */
+.show-more {
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.show-more:hover {
+    color: #1976D2;
+    transform: translateX(3px);
+}
+
+.show-more::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2196F3;
+    transition: width 0.3s ease;
+}
+
+.show-more:hover::after {
+    width: 100%;
+}
+
+/* Quick Add Button Hover Effect */
+.add-button {
+    transition: all 0.3s ease;
+}
+
+.add-button:hover {
+    transform: scale(1.1);
+    background: #45a049;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+}
+
+.add-button i {
+    transition: transform 0.3s ease;
+}
+
+.add-button:hover i {
+    transform: rotate(90deg);
+}
+
+/* Chatbot Button Hover Effect */
+.chatbot-button {
+    transition: all 0.3s ease;
+}
+
+.chatbot-button:hover {
+    transform: scale(1.1);
+    background: #1976D2;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+}
+
+.chatbot-button i {
+    transition: transform 0.3s ease;
+}
+
+.chatbot-button:hover i {
+    transform: scale(1.1);
+}
+
+/* Month Item Hover Effect */
+.month-item {
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.month-item:hover {
+    background-color: rgba(33, 150, 243, 0.1);
+    padding-left: 1rem;
+}
+
+/* Dark Mode Hover Effects */
+.dark-mode .month-item:hover {
+    background-color: rgba(33, 150, 243, 0.2);
+}
+
+/* Profile Icon Hover Effect */
+.profile-icon {
+    transition: all 0.3s ease;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+    background-color: #e0e0e0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .profile-icon:hover {
+    background-color: #505050;
+}
+
+/* Dark Mode Toggle Enhanced Hover */
+.dark-mode-toggle {
+    transition: all 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Graph Section Hover Effect */
+.expenditure-graph {
+    transition: all 0.3s ease;
+}
+
+.expenditure-graph:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .expenditure-graph:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal Base Styles */
+.expense-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: 10vh auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Form Elements */
+.expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #333;
+}
+
+.form-input {
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* Payment Methods Grid */
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.75rem;
+}
+
+.payment-method {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-method:hover {
+    border-color: #4caf50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.payment-method.selected {
+    background-color: #4caf50;
+    border-color: #4caf50;
+    color: white;
+}
+
+/* Categories Grid */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 0.75rem;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-item:hover {
+    border-color: #4caf50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.category-item.selected {
+    background-color: #4caf50;
+    border-color: #4caf50;
+    color: white;
+}
+
+/* Voice Input Button */
+.voice-input-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+}
+
+.voice-input-btn:hover {
+    transform: scale(1.1);
+    background-color: #45a049;
+}
+
+/* Receipt Upload */
+.receipt-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background-color: #f5f5f5;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.receipt-upload-btn:hover {
+    background-color: #eeeeee;
+    border-color: #4caf50;
+}
+
+/* Submit Button */
+.submit-btn {
+    padding: 1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Close Button */
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #333;
+    transform: rotate(90deg);
+}
+
+/* Dark Mode Styles */
+.dark-mode .modal-content {
+    background-color: #2d2d2d;
+    color: white;
+}
+
+.dark-mode .form-label {
+    color: #ffffff;
+}
+
+.dark-mode .form-input {
+    background-color: #363636;
+    border-color: #404040;
+    color: white;
+}
+
+.dark-mode .payment-method,
+.dark-mode .category-item {
+    background-color: #363636;
+    border-color: #404040;
+    color: #ffffff;
+}
+
+.dark-mode .payment-method:hover,
+.dark-mode .category-item:hover {
+    background-color: #404040;
+    border-color: #4caf50;
+}
+
+.dark-mode .receipt-upload-btn {
+    background-color: #363636;
+    border-color: #404040;
+    color: white;
+}
+
+.dark-mode .modal-close {
+    color: #ffffff;
+}
+
+/* Simple Profile Dropdown */
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 2rem;
+    width: 200px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.profile-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown-item i {
+    width: 20px;
+    color: #666;
+}
+
+.dropdown-separator {
+    height: 1px;
+    background-color: #eee;
+    margin: 5px 0;
+}
+
+/* Profile Dialog Modal */
+.profile-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+}
+
+.profile-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-dialog {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.profile-photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.profile-photo:hover .photo-overlay {
+    opacity: 1;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #333;
+}
+
+.form-input {
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.change-password-btn {
+    background: none;
+    border: none;
+    color: #2196F3;
+    padding: 0;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.change-password-btn:hover {
+    text-decoration: underline;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.save-btn {
+    padding: 0.75rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: #45a049;
+}
+
+/* Dark Mode Styles */
+.dark-mode .profile-dropdown,
+.dark-mode .profile-dialog {
+    background-color: #2d2d2d;
+    color: white;
+}
+
+.dark-mode .dropdown-item:hover {
+    background-color: #363636;
+}
+
+.dark-mode .form-label {
+    color: #fff;
+}
+
+.dark-mode .form-input {
+    background-color: #363636;
+    border-color: #404040;
+    color: white;
+}
+
+.dark-mode .change-password-btn {
+    color: #64b5f6;
+}
+
+.dark-mode .dropdown-separator {
+    background-color: #404040;
+}
+
