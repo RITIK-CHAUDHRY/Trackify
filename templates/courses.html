@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Courses - Trackify</title>
+</head>
+<body>
+    <div class="main-container">
+        <nav class="top-nav">
+            <div class="nav-brand">TRACKIFY</div>
+            <div class="nav-links">
+                <a href="{{ url_for('main_home') }}">Home</a>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('news') }}">News</a>
+            </div>
+            <a href="{{ url_for('logout') }}" class="logout-btn">
+                <i class="fas-fa-sign-out-alt"></i> Logout
+            </a>
+        </nav>
+
+        <div class="courses-container">
+            <div class="courses-header">
+                <h1>Financial Courses</h1>
+                <p>Enhance your financial knowledge with our upcoming courses</p>
+            </div>
+
+            <div class="coming-soon">
+                <i class="fas fa-graduation-cap coming-soon-icon"></i>
+                <h2>Courses Coming Soon!</h2>
+                <p>We're preparing high-quality financial education content for you.</p>
+                <p>Stay tuned for updates!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

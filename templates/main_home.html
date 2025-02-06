@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Home - Trackify</title>
+</head>
+<body>
+    <div class="main-container">
+        <nav class="top-nav">
+            <div class="nav-brand">TRACKIFY</div>
+            <div class="nav-user">
+                <span>Welcome, {{ username }}</span>
+                <a href="{{ url_for('logout') }}" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </nav>
+
+        <div class="cards-container">
+            <!-- Dashboard Card -->
+            <div class="feature-card" onclick="location.href='{{ url_for('dashboard') }}'">
+                <div class="card-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2>Dashboard</h2>
+                <p>Track your expenses and get insights</p>
+            </div>
+
+            <!-- Courses Card -->
+            <div class="feature-card" onclick="location.href='{{ url_for('courses') }}'">
+                <div class="card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h2>Courses</h2>
+                <p>Learn financial management</p>
+            </div>
+
+            <!-- News Card -->
+            <div class="feature-card" onclick="location.href='{{ url_for('news') }}'">
+                <div class="card-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <h2>News</h2>
+                <p>Stay updated with financial news</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
