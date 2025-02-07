@@ -33,11 +33,15 @@ Trackify is a finance application that helps users track their expenses and gain
    ```
 
 ## Usage
-1. Run the application:
+1. Install the dependencies
+   ```bash
+   npm run dev
+   ```
+2. Run the application:
    ```bash
    python app.py
    ```
-2. Open your web browser and go to `http://localhost:5000`.
+3. Open your web browser and go to `http://localhost:5000`.
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
