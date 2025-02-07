@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Sign Up</title>
 </head>
 <body>
@@ -11,10 +12,22 @@
         <h1>Register with Us</h1>
         <div class="login-card">
             <form action="/register" method="POST">
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                <div class="auth-input">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="auth-input">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="auth-input">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="auth-input">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                </div>
                 <button type="submit">Register</button>
             </form>
             <p>
