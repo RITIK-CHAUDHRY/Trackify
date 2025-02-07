@@ -43,7 +43,8 @@ def login():
     if db.verify_user(email, password):
         session['email'] = email
         return redirect(url_for('main_home'))
-    return "Invalid credentials", 401
+    return render_template("index.html", error="Invalid credentials"), 200
+
 
 @app.route("/main_home")
 def main_home():

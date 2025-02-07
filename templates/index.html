@@ -34,12 +34,14 @@
                 </div>
                 <button type="submit" class="submit-btn">Sign In</button>
             </form>
-            <p class="text-center mt-4">
-                New to Trackify?
-                <button onclick="window.location.href='/signup'" class="submit-btn">Create Account</button>
+                {% if error %}
+                <div class="error-message">{{ error }}</div>
+                {% endif %}
+                <p class="text-center mt-4">
+                    New to Trackify?
+                    <button onclick="window.location.href='/signup'" class="submit-btn">Create Account</button>
+                </p>
 
-
-            </p>
         </div>
     </div>
 </body>
